@@ -1,0 +1,5 @@
+venv
+migrations
+app.db
+__pycache__
+.env
