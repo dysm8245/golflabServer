@@ -32,6 +32,17 @@ def update(user_token):
     response = user_schema.dump(user)
     return jsonify(response)
 
+@api.route("/addPic", methods=["PUT"])
+@token_required
+def updatePic(user_token):
+    user = User.query.filter_by(token = user_token.token).first()
+    user.profileURL = request.json["profilePic"]
+
+    db.session.commit()
+
+    response = user_schema.dump(user)
+    return jsonify(response)
+
 @api.route("/addNote", methods=["POST"])
 @token_required
 def addNote(user_token):
