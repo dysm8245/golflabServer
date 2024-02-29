@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
     bestScore = db.Column(db.String(100), nullable=True)
     handicap = db.Column(db.String(100), nullable=True)
     favCourse = db.Column(db.String(100), nullable=True)
+    profileURL = db.Column(db.String, nullable=True)
     token = db.Column(db.String, nullable=False, unique=True)
 
     def __init__(self, email, username, token):
@@ -65,7 +66,7 @@ class FriendSchema(ma.Schema):
 
 class UserSchema(ma.Schema):
     class Meta:
-        fields = ['id', 'username', 'email', 'token', 'bestScore', 'handicap', 'favCourse']
+        fields = ['id', 'username', 'email', 'token', 'bestScore', 'handicap', 'favCourse', 'profileURL']
 
 note_schema = NoteSchema()
 notes_schema = NoteSchema(many=True)
