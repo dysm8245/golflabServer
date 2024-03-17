@@ -4,6 +4,11 @@ from models import db, User, Note, Friend, note_schema, notes_schema, friend_sch
 
 api = Blueprint('api', __name__, url_prefix="/api")
 
+@api.route("/", methods=["GET"])
+def getServer():
+    response = {"status": "ok"}
+    return jsonify(response)
+
 @api.route("/signin", methods=["POST"])
 def signin():
     email = request.json["email"]
